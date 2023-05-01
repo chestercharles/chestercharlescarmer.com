@@ -1,11 +1,136 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Chester Charles Carmer</title>
+    <title>chester charles carmer</title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        background-image: url("unsplash.jpg");
+        color: #454545;
+        font-family: "Libre Baskerville", serif;
+        font-size: 16px;
+      }
+      nav ul {
+        margin: 0;
+        padding: 0;
+        list-style-type: none;
+        display: flex;
+        text-align: center;
+        justify-content: center;
+        vertical-align: middle;
+      }
+      nav ul li {
+        padding: 10px;
+      }
+      nav h1 {
+        margin: 0;
+        padding: 0;
+      }
+      nav h3 {
+        margin: 0;
+        padding: 0;
+      }
+      a {
+        text-decoration: none;
+      }
+      a:hover {
+        text-decoration: underline;
+        cursor: pointer;
+      }
+      .hidden {
+        display: none;
+      }
+      section {
+        padding: 8;
+        margin: auto;
+        text-align: center;
+      }
+      #shows table {
+        margin: auto;
+        width: 50%;
+        text-align: center;
+      }
+      #title {
+        font-size: 24px;
+      }
+    </style>
   </head>
   <body>
-    Howdy, world!
+    <nav>
+      <ul>
+        <li><h3 id="title">chester charles carmer</h3></li>
+        <li>
+          <h3><a href="#music">music</a></h3>
+        </li>
+        <li>
+          <h3><a href="#shows">shows</a></h3>
+        </li>
+        <li>
+          <h3><a href="#contact">contact</a></h3>
+        </li>
+      </ul>
+    </nav>
+    <section id="music" class="hidden">
+      <iframe
+        style="border-radius: 12px"
+        src="https://open.spotify.com/embed/artist/6P7PVgWV8cusQlQuTTVfl4?utm_source=generator&theme=0"
+        width="100%"
+        height="352"
+        frameborder="0"
+        allowfullscreen=""
+        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+        loading="lazy"
+      ></iframe>
+    </section>
+    <section id="shows" class="hidden">
+      <table>
+        <tbody>
+          <tr>
+            <td>Date</td>
+            <td>Venue</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+    <section id="contact" class="hidden">
+      <h2 id="booking">
+        For booking, please contact
+        <a href="mailto:chestercarmer@me.com">chestercarmer@me.com</a>
+      </h2>
+    </section>
   </body>
+  <script type="text/javascript">
+    function showShows() {
+      document.getElementById("shows").innerHTML = "shows";
+    }
+
+    function getAnchorFromUrl() {
+      var url = window.location.href;
+      var anchor = url.split("#")[1];
+      return anchor;
+    }
+
+    window.addEventListener("hashchange", function () {
+      let activeSection = getAnchorFromUrl();
+      document.getElementById("music").classList.add("hidden");
+      document.getElementById("shows").classList.add("hidden");
+      document.getElementById("contact").classList.add("hidden");
+      document.getElementById(activeSection).classList.remove("hidden");
+    });
+
+    let activeSection = getAnchorFromUrl();
+    if (activeSection) {
+      console.log("getting", activeSection, "from url");
+      document.getElementById(activeSection).classList.remove("hidden");
+    } else {
+      document.getElementById("music").classList.remove("hidden");
+    }
+  </script>
 </html>
